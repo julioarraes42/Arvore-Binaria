@@ -64,6 +64,33 @@ public class ArvoreBinaria {
 			System.out.print(no.valor);
 		}
 	}
+
+	public No excluirNo(No raiz, int valor) {
+		if (raiz == null)
+			return raiz;
+		if (valor < raiz.valor)
+			raiz.menor = excluirNo(raiz.menor, valor);
+		else if (valor > raiz.valor)
+			raiz.maior = excluirNo(raiz.maior, valor);
+		else {
+			if (raiz.menor == null)
+				return raiz.maior;
+			else if (raiz.maior == null)
+				return raiz.menor;
+			raiz.valor = encontrarMenorValor(raiz.maior);
+			raiz.maior = excluirNo(raiz.maior, raiz.valor);
+		}
+		return raiz;
+	}
+
+	int encontrarMenorValor(No no) {
+		int menorValor = no.valor;
+		while (no.menor != null) {
+			menorValor = no.menor.valor;
+			no = no.menor;
+		}
+		return menorValor;
+	}
 	
 	
 

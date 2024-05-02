@@ -91,6 +91,18 @@ public class ArvoreBinaria {
 		}
 		return menorValor;
 	}
+
+	public void buscarValor(No no, int valor) {
+		if(no != null) {
+			if(valor == no.valor) 
+				System.out.println("existe");
+			else if(valor < no.valor) 
+				buscarValor(no.menor, valor);
+			else if(valor > no.valor)
+				buscarValor(no.maior, valor);
+		}else
+			System.out.println("Nao existe");
+	}
 	
 	
 

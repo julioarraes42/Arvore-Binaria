@@ -65,22 +65,22 @@ public class ArvoreBinaria {
 		}
 	}
 
-	public No excluirNo(No raiz, int valor) {
-		if (raiz == null)
-			return raiz;
-		if (valor < raiz.valor)
-			raiz.menor = excluirNo(raiz.menor, valor);
-		else if (valor > raiz.valor)
-			raiz.maior = excluirNo(raiz.maior, valor);
+	public No excluirNo(No no, int valor) {
+		if (no == null)
+			return no;
+		if (valor < no.valor)
+			no.menor = excluirNo(no.menor, valor);
+		else if (valor > no.valor)
+			no.maior = excluirNo(no.maior, valor);
 		else {
-			if (raiz.menor == null)
-				return raiz.maior;
-			else if (raiz.maior == null)
-				return raiz.menor;
-			raiz.valor = encontrarMenorValor(raiz.maior);
-			raiz.maior = excluirNo(raiz.maior, raiz.valor);
+			if (no.menor == null)
+				return no.maior;
+			else if (no.maior == null)
+				return no.menor;
+			no.valor = encontrarMenorValor(no.maior);
+			no.maior = excluirNo(no.maior, no.valor);
 		}
-		return raiz;
+		return no;
 	}
 
 	public int encontrarMenorValor(No no) {

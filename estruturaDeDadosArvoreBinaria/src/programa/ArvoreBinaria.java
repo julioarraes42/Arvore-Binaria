@@ -83,7 +83,7 @@ public class ArvoreBinaria {
 		return raiz;
 	}
 
-	int encontrarMenorValor(No no) {
+	public int encontrarMenorValor(No no) {
 		int menorValor = no.valor;
 		while (no.menor != null) {
 			menorValor = no.menor.valor;
@@ -102,6 +102,31 @@ public class ArvoreBinaria {
 				buscarValor(no.maior, valor);
 		}else
 			System.out.println("Nao existe");
+	}
+	
+	public int contarAltura(No no) {
+		int valorMenor = 0;
+		int valorMaior = 0;
+		if(no == null)
+			return 0;
+		if(no.menor != null) 
+			valorMenor = contarAltura(no.menor);
+		if(no.maior != null)
+			valorMaior = contarAltura(no.maior);
+		if(no.menor == null && no.maior == null) {
+			return 1;
+		}
+		
+		if(no.valor == noRaiz.valor) {
+			if(valorMenor > valorMaior) {
+				return valorMenor;
+			}else
+				return valorMaior;
+		}else if(valorMenor > valorMaior) {
+			return valorMenor + 1;
+		}else
+			return valorMaior + 1;
+		
 	}
 	
 	
